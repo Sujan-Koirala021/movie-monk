@@ -43,7 +43,7 @@ function HowItWorks() {
                 </div>
 
                 <div className="mt-16 text-center">
-                    <Link to='/discover'>
+                    <Link to='/explore_kb'>
                         <button className='px-8 py-4 bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-green-500/30 rounded-lg text-lg'>
                             See It In Action
                         </button>
