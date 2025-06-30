@@ -23,6 +23,9 @@ MovieMonk helps you discover your next favorite movie using the power of **seman
 - **📈 KB Evaluation Support**  
   Utilizes MindsDB’s `EVALUATE KNOWLEDGE_BASE` to test and measure the accuracy and relevance of semantic search results.
 
+## Demo Video
+Click to watch Demo video
+[![Watch the video](https://img.youtube.com/vi/Jo95vSNnoxg/0.jpg)](https://youtu.be/Jo95vSNnoxg)
 
 ## Dependencies
 - React
