@@ -62,7 +62,7 @@ const Navbar = ({ showMoreDetails = false }) => {
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
-          <Link to='/explore_kb'>
+          <Link to='/screen'>
             <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-medium text-md transition-colors shadow-sm">
               Get Started
             </button>

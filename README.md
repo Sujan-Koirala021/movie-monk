@@ -74,7 +74,9 @@ cd ../backend
 
 ```bash
 GEMINI_API_KEY=<YOUR_GEMINI_API_KEY>
+GOOGLE_SHEET_ID=<YOUR_GOOGLE_SHEET_ID>
 ```
+Note that EVALUATE JOBS makes use of csv data from Google sheet to update for changes in knowledge base.
 
 ### Create and Activate  Virtual Environment
 ```bash
@@ -93,11 +95,47 @@ For windows,
 pip install -r requirements.txt
 ```
 
+### Setup Knowledge Base
+```bash
+python all_setup.py
+```
+
 ### Start the backend server
 ```bash
 uvicorn app:app --reload
 ```
 
+### Additional Configuratiosn:
+#### Evaulate the model 
+Use the provided evaluate.py script inside the backend directory to evaluate your MindsDB Knowledge Base using a CSV file of test data.
+Inside backend folder
+```bash
+python evaluate.py movies_sample_test.csv --save results.csv --table-name movie_test_data
+```
+#### Create jobs
+Use the provided job_setup.py script inside the backend/setup directory to create job for your MindsDB Knowledge Base
+```bash
+python job_setup.py
+```
+#### Positional Argument
+
+- `csv_file`: **(Required)**  
+  Path to the CSV file containing test data.
+
+  The CSV must include the following **two columns**:
+  - `question`: The input query to be tested against the knowledge base.
+  - `doc_id`: The expected document identifier (ground truth) used to verify LLM accuracy.
+
+#### Optional Arguments
+
+- `--save` *(optional)*  
+  Path to the output CSV file where evaluation results will be stored.  
+  - **Default:** `evaluate_result.csv`  
+  - If the file already exists, new results will be **appended** with a `timestamp` column.
+
+- `--table-name` *(optional)*  
+  Name to assign to the MindsDB table created from the input CSV.  
+  - **Default:** `movie_test_data`
 
 ## Usage
 
@@ -123,9 +161,10 @@ This project uses MindsDB to power intelligent movie recommendations via Knowled
 ### 2️⃣ Knowledge Base Creation
 
 - Created a Knowledge Base (`movies_kb`) from the uploaded movie data.
+- Inserted (`movierecommendation.csv`) data to Knowledge Base.
 - Used semantic columns: `Title`, `Genre`, `Overview` for embedding and search.
 - Defined metadata columns like `Vote_Average`, `Popularity`, `Release_Date`, `Vote_Count`, and `Original_Language` for SQL-style filtering.
-
+- ChromaDB for index creation.
 
 ```sql
 CREATE KNOWLEDGE_BASE IF NOT EXISTS movie_recommender.movies_kb
@@ -143,6 +182,7 @@ USING
     metadata_columns = ['Release_Date','Popularity','Vote_Count','Vote_Average','Original_Language','Poster_Url'],
     content_columns = ['Title','Genre','Overview'],
     id_column = 'Title';
+
 ```
 
 ---
@@ -174,6 +214,21 @@ USING
 - JSON responses are returned to the frontend with relevant movie data, including title, overview, rating, and poster URL.
 - Optionally used `EVALUATE KNOWLEDGE_BASE` to assess the quality of KB results.
 
+## ✅ Project Checklist
+
+- **CREATE KNOWLEDGE_BASE** used to initialize KB (`movies_kb`)
+- 📥 **INSERT INTO knowledge_base** used to ingest movie data (used `movies_data` from `movierecommendation.csv`) (file: `backend/setup/kb_setup.py`)
+- 🔍 **SELECT ... WHERE content LIKE '<query>'** used for semantic search (used in `/ask-kb` endpoint file:`backend>query>handler.py`)
+- 🧠 **CREATE INDEX ON KNOWLEDGE_BASE** auto-created via ChromaDB 
+- 🗂️ **metadata_columns** defined and used for attribute filtering (`Vote_Average`, `Popularity`, `Release_Date`, `Vote_Count`, and `Original_Language` columns)
+- ⏱️ **JOBS** used to periodically sync new data into the KB 
+- 🔄 **MindsDB Agent** integrated to use KB results in generation (`movies_agent`)(used in `/ask` endpoint file:`backend>query>handler.py`)
+- 🤖 **AI Table OR Agent Workflow** built agent using KB(`movies_agent`) (file: `backend/setup/agent_setup.py`)
+- 🎯 **EVALUATE KNOWLEDGE_BASE** used to test relevancy/accuracy (`backend/evaluate.py`)
+- 🎥 Video demo uploaded showcasing KB features
+- 📝 README includes setup instructions and usage guide
+- ✍️ Dev post published explaining the app and use cases
+- 💬 Feedback submitted with feature suggestions
 
 ## Contributing
 

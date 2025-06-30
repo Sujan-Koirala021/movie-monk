@@ -8,7 +8,7 @@ const Footer = () => {
         <span className="text-sm text-gray-700 sm:text-center dark:text-gray-300">© 2025 MovieMonk. All Rights Reserved.</span>
         <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-700 dark:text-gray-300 sm:mt-0">
           <li>
-            <a href="/screen" className="hover:underline me-4 md:me-6 text-green-600 dark:text-green-400">Contact</a>
+            <a href="/screen" className="hover:underline me-4 md:me-6 text-green-600 dark:text-green-400">Screen</a>
           </li>
           <li>
             <a href="/about" className="hover:underline me-4 md:me-6 text-green-600 dark:text-green-400">About Us</a>

@@ -26,20 +26,16 @@ const HeroSection = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to='/explore_kb'>
+              <Link to='/discover'>
                 <button className=' px-8 py-4 bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-green-500/30 rounded-lg text-lg font-bold'>
-                  Start Discovering
+                  Start Discovering 
                 </button>
               </Link>
-              <Link to='/chat_agent'>
-
-                <button variant="outline" className="text-lg px-8 py-4 border border-green-200 text-green-600 hover:bg-green-200 rounded-lg font-bold">
-                  <span className='flex justify-center items-center'>
-                    Talk with MovieMonk <ChevronRight className="ml-2 h-5 w-5" />
-                  </span>
-                </button>
-              </Link>
-
+              <button variant="outline" className="text-lg px-8 py-4 border border-green-200 text-green-600 hover:bg-green-200 rounded-lg font-bold">
+                <span className='flex justify-center items-center'>
+                  Talk with MovieMonk <ChevronRight className="ml-2 h-5 w-5" />
+                </span>
+              </button>
             </div>
           </div>
 
@@ -55,7 +51,7 @@ const HeroSection = () => {
                   loading="lazy"
                 />
               </div>
-
+                
               <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-gradient-to-r from-green-400 to-teal-500 text-white text-center rounded-full shadow-lg">
               </div>
             </div>
