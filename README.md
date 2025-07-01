@@ -240,6 +240,7 @@ USING
 
 ## MindsDB issue creation:
 - Knowledge Base filtering does not support DATE comparisons in metadata columns: (https://github.com/mindsdb/mindsdb/issues/11222)
+- Unable to Delete Knowledge Base Created via Python SDK in MindsDB GUI : (https://github.com/mindsdb/mindsdb/issues/11230)
 
 
 ## Contributing
