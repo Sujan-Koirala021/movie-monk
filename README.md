@@ -219,6 +219,7 @@ USING
 - JSON responses are returned to the frontend with relevant movie data, including title, overview, rating, and poster URL.
 - Optionally used `EVALUATE KNOWLEDGE_BASE` to assess the quality of KB results.
 
+
 ## ✅ Project Checklist
 
 - **CREATE KNOWLEDGE_BASE** used to initialize KB (`movies_kb`)
@@ -226,14 +227,20 @@ USING
 - 🔍 **SELECT ... WHERE content LIKE '<query>'** used for semantic search (used in `/ask-kb` endpoint file:`backend>query>handler.py`)
 - 🧠 **CREATE INDEX ON KNOWLEDGE_BASE** auto-created via ChromaDB 
 - 🗂️ **metadata_columns** defined and used for attribute filtering (`Vote_Average`, `Popularity`, `Release_Date`, `Vote_Count`, and `Original_Language` columns)
-- ⏱️ **JOBS** used to periodically sync new data into the KB 
+- ⏱️ **JOBS** used to periodically sync new data into the KB
+(`backend/setup/job_setup.py`) 
 - 🔄 **MindsDB Agent** integrated to use KB results in generation (`movies_agent`)(used in `/ask` endpoint file:`backend>query>handler.py`)
 - 🤖 **AI Table OR Agent Workflow** built agent using KB(`movies_agent`) (file: `backend/setup/agent_setup.py`)
 - 🎯 **EVALUATE KNOWLEDGE_BASE** used to test relevancy/accuracy (`backend/evaluate.py`)
 - 🎥 Video demo uploaded showcasing KB features
 - 📝 README includes setup instructions and usage guide
 - ✍️ Dev post published explaining the app and use cases
+(dev.to link: https://dev.to/sujankoirala021/moviemonk-an-ai-powered-movie-recommendation-app-using-mindsdb-knowledge-base-agent-2if)
 - 💬 Feedback submitted with feature suggestions
+
+## MindsDB issue creation:
+- Knowledge Base filtering does not support DATE comparisons in metadata columns: (https://github.com/mindsdb/mindsdb/issues/11222)
+
 
 ## Contributing
 
