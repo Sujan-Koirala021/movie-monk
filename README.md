@@ -26,6 +26,9 @@ MovieMonk helps you discover your next favorite movie using the power of **seman
 ## Demo Video
 [![Watch the video](https://img.youtube.com/vi/Jo95vSNnoxg/0.jpg)](https://youtu.be/Jo95vSNnoxg)
 
+## Dev.to URL
+https://dev.to/sujankoirala021/moviemonk-an-ai-powered-movie-recommendation-app-using-mindsdb-knowledge-base-agent-2if
+
 ## Dependencies
 - React
 - Tailwind
